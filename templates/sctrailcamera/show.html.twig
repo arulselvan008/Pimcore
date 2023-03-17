@@ -1,0 +1,103 @@
+{# @var sctrailcamera \Pimcore\Model\DataObject\sctrailcamera #}
+
+{% extends 'layouts/stealthcam.html.twig' %}
+
+
+{% block content %}
+
+    <div class="ItemName">
+        <h1>{{ sctrailcamera.ProductName }}</h1>
+    </div>
+    <div class="Left_Content">
+        <div class="Item_details">
+            <h1>TYPE: sctrailcamera</h1>
+            <h1>SKU: {{ sctrailcamera.SKU }}</h1>
+            <h1>UPC: {{ sctrailcamera.UPC }}</h1>
+            <h1>Global Trade Item Number: {{ sctrailcamera.GlobalTradeItemNumber }}</h1>
+        </div>
+        <div class="Prod_Feature">
+            <h1>PRODUCT FEATURES</h1>
+            {{ sctrailcamera.Description|raw }}
+        </div>
+        <div class="Prod_Specs">
+            <h1>PRODUCT SPECS</h1>
+            <ul style="list-style-type:circle">
+                <p><b>PRODUCT WIDTH:</b>{{ sctrailcamera.ProductWidth }}</p>
+                <p><b>PRODUCT HEIGHT:</b>{{ sctrailcamera.ProductHeight }}</p>
+                <p><b>PRODUCT DEPTH:</b>{{ sctrailcamera.ProductDepth }}</p>
+                <p><b>PRODUCT SIZE WIDTH:</b>{{ sctrailcamera.ProductSizeWidth }}</p>
+                <p><b>PRODUCT SIZE HEIGHT:</b>{{ sctrailcamera.ProductSizeHeight }}</p>
+                <p><b>PRODUCT SIZE DEPTH:</b>{{ sctrailcamera.ProductSizeDepth }}</p>
+                <p><b>PHOTO RESOLUTION:</b>{{ sctrailcamera.PhotoResolutions }}</p>
+                <p><b>PHOTO UPLOAD RESOLUTION:</b>{{ sctrailcamera.PhotoUploadResolutions }}</p>
+                <p><b>VIDEO RESOLUTION:</b>{{ sctrailcamera.VideoResolutions }}</p>
+                <p><b>VIDEO UPLOAD RESOLUTION:</b>{{ sctrailcamera.VideoUploadResolutions }}</p>
+                <p><b>VIDEO AUDIO:</b>{{ sctrailcamera.VideoAudio }}</p>
+                <p><b>DETECTION IR RANGE:</b>{{ sctrailcamera.DetectionIRRange }}</p>
+                <p><b>LED'S:</b>{{ sctrailcamera.LEDs }}</p>
+                <p><b>LED FLASH TYPE:</b>{{ sctrailcamera.LEDFlashType }}</p>
+                <p><b>TRIGGER SPEED:</b>{{ sctrailcamera.TriggerSpeed }}</p>
+                <p><b>BURST MODE:</b>{{ sctrailcamera.BurstMode }}</p>
+                <p><b>RECOVERY TIME:</b>{{ sctrailcamera.Recoverytime }}</p>
+                <p><b>PIR COMBO MODE:</b>{{ sctrailcamera.PIRComboMode }}</p>
+                <p><b>PIR IR ARRAY:</b>{{ sctrailcamera.PIRIRArray }}</p>
+                <p><b>IMAGE STAMP:</b>{{ sctrailcamera.ImageStamp }}</p>
+                <p><b>SD CARD SUPPORT:</b>{{ sctrailcamera.SDCardSupport }}</p>
+                <p><b>BATTERIES REQUIRED:</b>{{ sctrailcamera.BatteriesRequired }}</p>
+                <p><b>LOCK LATCH:</b>{{ sctrailcamera.LockLatch }}</p>
+                <p><b>EXTERNAL POWER JACK:</b>{{ sctrailcamera.Externalpowerjack }}</p>
+                {#<p><b>CELLULAR PROVIDER:</b>{{ sctrailcamera.CellularProvider }}</p>#}
+            </ul>
+        </div>
+    </div>
+    <div class="Right_content">
+        <div class="Item_img">
+            {% if sctrailcamera.AssetAdvanced %}
+				{{ sctrailcamera.AssetAdvanced.thumbnail("content").html|raw }}
+			{% endif %}
+        </div>
+        {% block Assets %}
+			{% set additionalImages = sctrailcamera.Assets %}
+			{% set sum = 1 %}
+			{%  if(additionalImages) %}
+
+					{% for image in additionalImages %}
+
+						<div class="Item_img_{{ sum }}">
+							
+								{{ image.thumbnail.getHTML({imgAttributes: {class: 'img-thumbnail1 img-fluid'}})|raw }}
+							
+						</div>
+					{% set sum = sum + 1 %}
+					{% endfor %}
+
+			{%  endif %}
+		{% endblock %}
+		<div class="ItemStatus">
+            <label for="Status">Item Status-</label>
+            <select name="Item Status" id="Status">
+                <option value="Active">Active</option>
+                <option value="Inactive">Inactive</option>
+              </select>
+        </div>
+        <div class="VAM">
+            <h1>View All Media</h1>
+        </div>
+        <div class="MSRP">
+            <h1>{{ sctrailcamera.PriceType }} : ${{ sctrailcamera.Price }} </h1>
+        </div>
+        <div class="Available">
+            <label for="Available">Item Availablility-</label>
+            <select name="Availablility" id="Available">
+                <option value="In Stock">In Stock</option>
+                <option value="Out of Stock">Out of Stock</option>
+              </select>
+        </div>
+        <div class="LBtn">
+            <a href="#" class="btn_1">Save</a>
+            <a href="#" class="btn_2">Submit for Approval</a>
+            <a href="#" class="btn_3">Cancel</a>  
+        </div>
+    </div>
+
+{% endblock %}

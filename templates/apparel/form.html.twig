@@ -1,0 +1,105 @@
+{# @var apparel \Pimcore\Model\DataObject\apparel #}
+
+{% extends 'layouts/layout.html.twig' %}
+
+{% block content %}
+<form action="{{ path('apparel_create_product') }}" method="POST">
+    <div class="AddProduct">
+	
+        <h3>Product Details & Media</h3>
+        <div>
+			<div class="form-main">
+				<div class="form-text">
+					<label for="AddProduct">Product Name:</label>
+					<label for="AddProduct">SKU:</label>
+					<label for="AddProduct">UPC:</label>
+					<label for="AddProduct">Global Trade Item Number:</label>
+					<label for="AddProduct">Size:</label>
+					<label for="Thumbnail">Thumbnail:</label>
+				</div>
+
+				<div class="form-input">
+					<input type="text" class="class-input" id="ProductName" name="ProductName" required/>
+					<input type="text" class="class-input" id="SKU" name="SKU" />
+					<input type="text" class="class-input" id="UPC" name="UPC" />
+					<input type="text" class="class-input" id="GlobalTradeItemNumber" name="GlobalTradeItemNumber" />
+					<select name="Size" id="Size" placeholder="Size" required>
+						<option value="">Select Size</option>
+						<option value="Small">Small</option>
+						<option value="Medium">Medium</option>
+						<option value="Large">Large</option>
+						<option value="XL">XL</option>
+						<option value="2X">2X</option>
+						<option value="3X">3X</option>
+					</select>
+					<input type="text" id="Thumbnail" name="Thumbnail" />
+				</div>
+			</div>
+        </div>
+
+        <h3>Product Features</h3>
+        <div class="form-main-1">
+			<div class="form-text">
+				<label for="AddProduct">Description:</label>
+			</div>
+			<div class="form-input">
+				<input type="text" id="Description" name="Description" />
+			</div>
+        </div>
+		
+        <h3>Product Specs</h3>
+		<div class="form-main gap">
+			<div class="form-text">
+				<label for="AddProduct">Material:</label>
+				<label for="AddProduct">Color:</label>
+				<label for="AddProduct">Logo:</label>
+				<label for="AddProduct">Neck Line:</label>
+				<label for="AddProduct">Material Specs:</label>
+			</div>
+			<div class="form-input">
+				<input type="text" class="class-input" id="Material" name="Material"/>
+				<select name="Color" id="Color" placeholder="Color" required>
+					<option value="">Select Color</option>
+					<option value="Grey">Grey</option>
+					<option value="Black">Black</option>
+					<option value="White">White</option>
+				</select>
+				<input type="text" class="class-input" id="Logo" name="Logo" />
+				<input  type="text" class="class-input"  id="Neckline"  name="Neckline"/>
+				<input  type="text" class="class-input"  id="MaterialSpecs"  name="MaterialSpecs"/>
+			</div>
+		</div>
+
+        <h3>Pricing & Availability</h3>
+        <div class="form-main gap">
+			<div class="form-text">
+				<label for="AddProduct">Price Type:</label>
+				<label for="AddProduct">Price:</label>
+				<label for="AddProduct">Availability:</label>
+				<label for="AddProduct">Item Status:</label>
+			</div>
+			<div class="form-input">
+				<select name="PriceType" id="PriceType" placeholder="Price Type" required>
+					<option value="">Select Price Type</option>
+					<option value="MSRP">MSRP</option>
+					<option value="MD">MD</option>
+				</select>
+				<input type="text" class="class-input" id="Price" name="Price" />
+				<select name="Availability" id="Availability" placeholder="Availability" required>
+					<option value="">Select Availability</option>
+					<option value="In Stock">In Stock</option>
+					<option value="Out of Stock">Out of Stock</option>
+				</select>
+				<select name="ItemStatus" id="ItemStatus" placeholder="Item Status" required>
+					<option value="">Select Item Status</option>
+					<option value="Active">Active</option>
+					<option value="Inactive">Inactive</option>
+				</select>
+			</div>
+        </div>
+	</div>
+	<div class="LBtn">
+		<input type="submit"  class="button-class" value="SUBMIT" class="btn_1"/>
+	</div>
+</form>
+{% endblock %}

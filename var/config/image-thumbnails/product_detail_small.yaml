@@ -1,0 +1,21 @@
+pimcore:
+    assets:
+        image:
+            thumbnails:
+                definitions:
+                    product_detail_small:
+                        items: {  }
+                        medias: {  }
+                        name: product_detail_small
+                        description: ''
+                        group: E-Commerce
+                        format: SOURCE
+                        quality: 85
+                        highResolution: 0.0
+                        preserveColor: false
+                        preserveMetaData: false
+                        rasterizeSVG: false
+                        downloadable: false
+                        modificationDate: 1671600134
+                        creationDate: 1671600093
+                        preserveAnimation: false

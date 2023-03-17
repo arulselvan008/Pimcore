@@ -1,0 +1,124 @@
+{# @var apparel \Pimcore\Model\DataObject\apparel #}
+
+{% extends 'layouts/layout.html.twig' %}
+
+
+{% block content %}
+<form action="{{ path('apparel_edit_product',{'apparelID':apparel.ID}) }}" method="POST">
+    <div class="ItemName">
+        <h1>{{ apparel.ProductName }}</h1>
+    </div>
+    <div class="Left_Content">
+        <div class="Item_details">
+            <h1>TYPE: Apparel</h1>
+            <h1>SKU: {{ apparel.SKU }}</h1>
+            <h1>UPC: {{ apparel.UPC }}</h1>
+        </div>
+        <div class="Prod_Feature">
+            <h1>PRODUCT FEATURES</h1>
+            {{ apparel.Description|raw }}
+        </div>
+        <div class="Prod_Specs">
+            <h1>PRODUCT SPECS</h1>
+            <ul style="list-style-type:circle">
+                <p>
+					<b>MATERIAL:</b>
+					<span id="MaterialText">{{ apparel.Material }}</span>
+					<span class="clickbutton" id="MaterialButton" onclick="editFunctionMaterial()">Edit</span>
+					<input class="hidden" type="text" id="MaterialInput" name="Material" value="{{ apparel.Material }}"/>					
+				</p>
+                <p>
+					<b>COLOR:</b>
+					<span id="ColorText">{{ apparel.Color }}</span>
+					<span class="clickbutton" id="ColorButton" onclick="editFunctionColor()">Edit</span>
+					<input class="hidden" type="text" id="ColorInput" name="Color" value="{{ apparel.Color }}"/>		
+				</p>
+                <p>
+					<b>LOGO:</b>
+					<span id="LogoText">{{ apparel.Logo }}</span>
+					<span class="clickbutton" id="LogoButton" onclick="editFunctionLogo()">Edit</span>
+					<input class="hidden" type="text" id="LogoInput" name="Logo" value="{{ apparel.Logo }}"/>		
+				</p>
+                <p>
+					<b>NECKLINE:</b>
+					<span id="NecklineText">{{ apparel.Neckline }}</span>
+					<span class="clickbutton" id="NecklineButton" onclick="editFunctionNeckline()">Edit</span>
+					<input class="hidden" type="text" id="NecklineInput" name="Neckline" value="{{ apparel.Neckline }}"/>		
+				</p>
+                <p>
+					<b>MATERIAL SPECS:</b>
+					<span id="MaterialSpecsText">{{ apparel.MaterialSpecs }}</span>
+					<span class="clickbutton" id="MaterialSpecsButton" onclick="editFunctionMaterialSpecs()">Edit</span>
+					<input class="hidden" type="text" id="MaterialSpecsInput" name="MaterialSpecs" value="{{ apparel.MaterialSpecs }}"/>		
+				</p>
+				{% if(apparel.Brand) %}
+				<p>
+				    <b>BRAND:</b>
+                    <span id="BrandText">{{ apparel.Brand.BrandName }}</span>
+                </p>
+                {% endif %}
+                
+                {% if(apparel.Category) %}
+                <p>
+				    <b>CATEGORY:</b>
+                    <span id="BrandText">{{ apparel.Category.Category }}</span>
+                </p>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+    <div class="Right_content">
+        <div class="Item_img">
+            {% if apparel.AssetAdvanced %}
+				{{ apparel.AssetAdvanced.thumbnail("content").html|raw }}
+			{% endif %}
+        </div>
+		{% block Assets %}
+			{% set additionalImages = apparel.Assets %}
+			{% set sum = 1 %}
+			{%  if(additionalImages) %}
+
+					{% for image in additionalImages %}
+
+						<div class="Item_img_{{ sum }}">
+							
+								{{ image.thumbnail.getHTML({imgAttributes: {class: 'img-thumbnail1 img-fluid'}})|raw }}
+							
+						</div>
+					{% set sum = sum + 1 %}
+					{% endfor %}
+
+			{%  endif %}
+		{% endblock %}
+
+        <div class="ItemStatus">
+            <label for="Status">Item Status-</label>
+            <select name="ItemStatus" id="Status">
+                <option value="Active">Active</option>
+                <option value="Inactive">Inactive</option>
+              </select>
+        </div>
+        <div class="VAM">
+            <h1>View All Media</h1>
+        </div>
+        <div class="MSRP">
+            <h1>{{ apparel.PriceType }} : $<span id="PriceText">{{ apparel.Price }}</span> </h1>
+            <span class="clickbutton" id="PriceButton" onclick="editFunctionPrice()">Edit</span>
+			<input class="hidden" type="text" id="PriceInput" name="Price" value="{{ apparel.Price }}"/>
+        </div>
+        <div class="Available">
+            <label for="Available">Item Status-</label>
+            <select name="Availablility" id="Available">
+                <option value="In Stock">In Stock</option>
+                <option value="Out of Stock">Out of Stock</option>
+            </select>
+        </div>
+        <div class="LBtn">
+			<input type="hidden" id="apparelID" name="apparelID" value="{{ apparel.ID }}"/>
+			<input type="submit" class="btn_1" value="Save" name="Save"/>  
+			<a href="#" class="btn_2">Submit for Approval</a>
+			<a href="#" class="btn_3">Cancel</a>  
+        </div>
+    </div>
+</form> 
+{% endblock %}

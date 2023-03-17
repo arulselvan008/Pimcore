@@ -1,0 +1,27 @@
+{# @var apparel \Pimcore\Model\DataObject\apparel #}
+
+{% extends 'layouts/layout.html.twig' %}
+
+
+{% block content %}
+<div class="content_1">
+	<h1>{{ pimcore_input("headline") }}</h1>
+	<a href="{{ path('apparel_add_product') }}">Add New Product</a>
+	<div class="clearfix"></div>
+	{%  for apparel in apparel %}
+		{# @var apparel \Pimcore\Model\DataObject\Apparel #}
+		<div class="FI_1">
+			<a href="{{ path('pimcore_element', {'element': apparel}) }}">
+				<div class="Prod">
+					{% if apparel.AssetAdvanced %}
+						{{ apparel.AssetAdvanced.thumbnail("content").html|raw }}
+					{% endif %}
+				</div>
+				<h1>{{ apparel.ProductName }}</h1>
+				<h1>SKU: {{ apparel.SKU }}</h1>
+				<h1>UPC: {{ apparel.UPC }}</h1>	
+			</a>
+		</div>
+	{% endfor %}
+</div>
+{% endblock %}

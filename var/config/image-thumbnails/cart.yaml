@@ -1,0 +1,21 @@
+pimcore:
+    assets:
+        image:
+            thumbnails:
+                definitions:
+                    cart:
+                        items: {  }
+                        medias: {  }
+                        name: cart
+                        description: ''
+                        group: E-Commerce
+                        format: SOURCE
+                        quality: 85
+                        highResolution: 0.0
+                        preserveColor: false
+                        preserveMetaData: false
+                        rasterizeSVG: false
+                        downloadable: false
+                        modificationDate: 1671600105
+                        creationDate: 1671600060
+                        preserveAnimation: false

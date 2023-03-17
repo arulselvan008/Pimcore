@@ -1,0 +1,127 @@
+{# @var huntingaccessories \Pimcore\Model\DataObject\huntingaccessories #}
+
+{% extends 'layouts/layout.html.twig' %}
+
+
+{% block content %}
+
+    <div class="ItemName">
+        <h1>{{ huntingaccessories.ProductName }}</h1>
+    </div>
+    <div class="Left_Content">
+        <div class="Item_details">
+            <h1>TYPE: huntingaccessories</h1>
+            <h1>SKU: {{ huntingaccessories.SKU }}</h1>
+            <h1>UPC: {{ huntingaccessories.UPC }}</h1>
+            <h1>Global Trade Item Number: {{ huntingaccessories.GlobalTradeItemNumber }}</h1>
+        </div>
+        <div class="Prod_Feature">
+            <h1>PRODUCT FEATURES</h1>
+            {{ huntingaccessories.Description|raw }}
+        </div>
+        <div class="Prod_Specs">
+            <h1>PRODUCT SPECS</h1>
+            <ul style="list-style-type:circle">
+                <p><b>PRODUCT WIDTH:</b>{{ huntingaccessories.ProductWidth }}</p>
+                <p><b>PRODUCT HEIGHT:</b>{{ huntingaccessories.ProductHeight }}</p>
+                <p><b>PRODUCT DEPTH:</b>{{ huntingaccessories.ProductDepth }}</p>
+                <p><b>CONSTRUCTION:</b>{{ huntingaccessories.Construction }}</p>
+                <p><b>MATERIAL:</b>{{ huntingaccessories.Material }}</p>
+                <p><b>FEATURES:</b>{{ huntingaccessories.Features }}</p>
+                <p><b>WEIGHT:</b>{{ huntingaccessories.Weight }}</p>
+                <p><b>WEIGHT RATING:</b>{{ huntingaccessories.WeightRating }}</p>
+                <p><b>SIZE:</b>{{ huntingaccessories.Size }}</p>
+                <p><b>LENGTH:</b>{{ huntingaccessories.Length }}</p>
+                <p><b>HARDWARE:</b>{{ huntingaccessories.Hardware }}</p>
+                <p><b>USER:</b>{{ huntingaccessories.User }}</p>
+            </ul>
+        </div>
+    </div>
+    <div class="Right_content">
+        <div class="Item_img">
+            {% if huntingaccessories.AssetAdvanced %}
+				{{ huntingaccessories.AssetAdvanced.thumbnail("content").html|raw }}
+			{% endif %}
+        </div>
+        {% block Assets %}
+			{% set additionalImages = huntingaccessories.Assets %}
+			{% set sum = 1 %}
+			{%  if(additionalImages) %}
+
+					{% for image in additionalImages %}
+
+						<div class="Item_img_{{ sum }}">
+							
+								{{ image.thumbnail.getHTML({imgAttributes: {class: 'img-thumbnail1 img-fluid'}})|raw }}
+							
+						</div>
+					{% set sum = sum + 1 %}
+					{% endfor %}
+
+			{%  endif %}
+		{% endblock %}
+		<div class="ItemStatus">
+            <label for="Status">Item Status-</label>
+            <select name="Item Status" id="Status">
+                <option value="Active">Active</option>
+                <option value="Inactive">Inactive</option>
+              </select>
+        </div>
+        <div class="VAM">
+            <h1>View All Media</h1>
+        </div>
+        <div class="MSRP">
+            <h1>{{ huntingaccessories.PriceType }} : ${{ huntingaccessories.Price }} </h1>
+        </div>
+        <div class="Available">
+            <label for="Available">Item Availablility-</label>
+            <select name="Availablility" id="Available">
+                <option value="In Stock">In Stock</option>
+                <option value="Out of Stock">Out of Stock</option>
+              </select>
+        </div>
+        <div class="LBtn">
+            <a href="#" class="btn_1">Save</a>
+            <a href="#" class="btn_2">Submit for Approval</a>
+            <a href="#" class="btn_3">Cancel</a>  
+        </div>
+    </div>
+
+{% endblock %}
+
+
+{#{% extends 'layouts/layout.html.twig' %}#}
+
+
+{#{% block content %}#}
+
+{#    <div id="main-content" class="main-content mb-5">#}
+
+{#        <div class="page-header">#}
+{#            <h1>Name {{ huntingaccessories.ProductName }}</h1>#}
+{#			<h1>SKU {{ huntingaccessories.SKU }}</h1>#}
+{#			<h1>UPC {{ huntingaccessories.UPC }}</h1>#}
+{#			Global Trade Item Number {{ huntingaccessories.GlobalTradeItemNumber }}#}
+{#			{% if huntingaccessories.AssetAdvanced %}#}
+{#            {{ huntingaccessories.AssetAdvanced.thumbnail("content").html|raw }}#}
+{#            {% endif %}#}
+{#            Description {{ huntingaccessories.Description|raw }}#}
+{#			ProductWidth {{ huntingaccessories.ProductWidth|raw }}#}
+{#			ProductHeight {{ huntingaccessories.ProductHeight|raw }}#}
+{#			ProductDepth {{ huntingaccessories.ProductDepth|raw }}#}
+{#			Construction {{ huntingaccessories.Construction }}#}
+{#			Material {{ huntingaccessories.Material }}#}
+{#			Features {{ huntingaccessories.Features }}#}
+{#			Weight {{ huntingaccessories.Weight|raw }}#}
+{#			WeightRating {{ huntingaccessories.WeightRating|raw }}#}
+{#			Size {{ huntingaccessories.Size }}#}
+{#			Length {{ huntingaccessories.Length }}#}
+{#			Hardware {{ huntingaccessories.Hardware }}#}
+{#			User {{ huntingaccessories.User }}#}
+{#			Price Type {{ huntingaccessories.PriceType }}#}
+{#			Price {{ huntingaccessories.Price }}#}
+{#		</div>#}
+
+{#    </div>#}
+
+{#{% endblock %}#}

@@ -1,0 +1,32 @@
+{% import 'includes/macros.html.twig' as macros %}
+
+<section class="area-image d-block">
+    {{ macros.image_link(pimcore_image('image', { thumbnail: 'content', imgAttributes: {class: 'img-responsive'}}), editmode, 'galleryLightbox') }}
+</section>
+
+{# Will output<img src="/var/thumb_9999__auto_xxxxxxxx@2x.png" width="200" height="200" /> <!-- but the real image size is 400x400 pixel --> #}
+
+
+{# Custom image tag (thumbnail objects) #}
+
+{#*********Correct Code**********#}
+{#{% if editmode %}#}
+{#    {{ pimcore_image("myImage",{"thumbnail": "myThumbnail"}) }}#}
+{#{% else %}#}
+{#    {% set thumbnail = pimcore_image("myImage").getThumbnail("myThumbnail") %}#}
+{#    <img src="{{ thumbnail }}" width="{{ thumbnail.width }}" height="{{ thumbnail.height }}" />#}
+{#{% endif %}#}
+{#*********Correct Code**********#}
+
+
+
+
+ {#Custom drop targets #}
+{#<div class="myCustomImageDropTarget anotherClass">My first alternative drop target</div>#}
+{#{{ pimcore_image("image",{#}
+{#    "thumbnail": "contentfullimage",#}
+{#    "dropClass": "myCustomImageDropTarget"#}
+{#}) }}#}
+{#*********Correct Code**********#}
+{#<div class="myCustomImageDropTarget someClass"></div>#}
+{#*********Correct Code**********#}

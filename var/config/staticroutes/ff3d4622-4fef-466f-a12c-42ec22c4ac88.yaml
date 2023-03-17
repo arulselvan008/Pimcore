@@ -1,0 +1,15 @@
+pimcore:
+    staticroutes:
+        definitions:
+            ff3d4622-4fef-466f-a12c-42ec22c4ac88:
+                name: Test
+                pattern: /\/en\/add_product_form/
+                reverse: /en/add_product_form/
+                controller: 'App\Controller\ApparelController::formAction'
+                variables: ''
+                defaults: ''
+                siteId: {  }
+                methods: {  }
+                priority: 1
+                creationDate: 1671786465
+                modificationDate: 1671786868

@@ -1,0 +1,161 @@
+{# @var treestand \Pimcore\Model\DataObject\treestand #}
+
+{% extends 'layouts/layout.html.twig' %}
+
+
+{% block content %}
+
+    <div class="ItemName">
+        <h1>{{ treestand.ProductName }}</h1>
+    </div>
+    <div class="Left_Content">
+        <div class="Item_details">
+            <h1>TYPE: treestand</h1>
+            <h1>SKU: {{ treestand.SKU }}</h1>
+            <h1>UPC: {{ treestand.UPC }}</h1>
+            <h1>Global Trade Item Number: {{ treestand.GlobalTradeItemNumber }}</h1>
+        </div>
+        <div class="Prod_Feature">
+            <h1>PRODUCT FEATURES</h1>
+            {{ treestand.Description|raw }}
+        </div>
+        <div class="Prod_Specs">
+            <h1>PRODUCT SPECS</h1>
+            <ul style="list-style-type:circle">
+                <p><b>PRODUCT WIDTH:</b>{{ treestand.ProductWidth }}</p>
+                <p><b>PRODUCT HEIGHT:</b>{{ treestand.ProductHeight }}</p>
+                <p><b>PRODUCT DEPTH:</b>{{ treestand.ProductDepth }}</p>
+                <p><b>CONSTRUCTION:</b>{{ treestand.Construction }}</p>
+                <p><b>FOOT PLATFORM:</b>{{ treestand.FootPlatform }}</p>
+                <p><b>SEAT SIZE:</b>{{ treestand.SeatSize }}</p>
+                <p><b>SEAT STYLE:</b>{{ treestand.SeatStyle }}</p>
+                <p><b>SEAT HEIGHT:</b>{{ treestand.SeatHeight }}</p>
+                <p><b>PACKABLE:</b>{{ treestand.Packable }}</p>
+                <p><b>FASTNERS:</b>{{ treestand.Fastners }}</p>
+                <p><b>STAND WEIGHT:</b>{{ treestand.StandWeight }}</p>
+                <p><b>TREE SIZE:</b>{{ treestand.TreeSize }}</p>
+                <p><b>DIMENSIONS:</b>{{ treestand.Dimensions }}</p>
+                <p><b>ENTRANCE WIDTH:</b>{{ treestand.EntranceWidth }}</p>
+                <p><b>ENTRANCE HEIGHT:</b>{{ treestand.EntranceHeight }}</p>
+                <p><b>COVER</b>{{ treestand.Cover }}</p>
+                <p><b>TOTAL ROOF KIT:</b>{{ treestand.TotalRoofKit }}</p>
+                <p><b>TOTAL HEIGHT:</b>{{ treestand.TotalHeight }}</p>
+                <p><b>HEIGHT PER SECTION:</b>{{ treestand.HeightPerSection }}</p>
+                <p><b>SECTION:</b>{{ treestand.Section }}</p>
+                <p><b>TOTAL WEIGHT:</b>{{ treestand.TotalWeight }}</p>
+                <p><b>WEIGHT PER SECTION:</b>{{ treestand.WeightPerSection }}</p>
+                <p><b>MINIMUM TREE SIZE:</b>{{ treestand.MinimumTreeSize }}</p>
+                <p><b>STEP WIDTH:</b>{{ treestand.StepWidth }}</p>
+                <p><b>WEIGHT LIMIT:</b>{{ treestand.WeightLimit }}</p>
+                <p><b>WEIGHT RATING:</b>{{ treestand.WeightRating }}</p>
+                <p><b>HARNESS:</b>{{ treestand.Harness }}</p>
+            </ul>
+        </div>
+    </div>
+    <div class="Right_content">
+        <div class="Item_img">
+            {% if treestand.AssetAdvanced %}
+				{{ treestand.AssetAdvanced.thumbnail("content").html|raw }}
+			{% endif %}
+        </div>
+        {% block Assets %}
+			{% set additionalImages = treestand.Assets %}
+			{% set sum = 1 %}
+			{%  if(additionalImages) %}
+
+					{% for image in additionalImages %}
+
+						<div class="Item_img_{{ sum }}">
+							
+								{{ image.thumbnail.getHTML({imgAttributes: {class: 'img-thumbnail1 img-fluid'}})|raw }}
+							
+						</div>
+					{% set sum = sum + 1 %}
+					{% endfor %}
+
+			{%  endif %}
+		{% endblock %}
+		<div class="ItemStatus">
+            <label for="Status">Item Status-</label>
+            <select name="Item Status" id="Status">
+                <option value="Active">Active</option>
+                <option value="Inactive">Inactive</option>
+              </select>
+        </div>
+        <div class="VAM">
+            <h1>View All Media</h1>
+        </div>
+        <div class="MSRP">
+            <h1>{{ treestand.PriceType }} : ${{ treestand.Price }} </h1>
+        </div>
+        <div class="Available">
+            <label for="Available">Item Availablility-</label>
+            <select name="Availablility" id="Available">
+                <option value="In Stock">In Stock</option>
+                <option value="Out of Stock">Out of Stock</option>
+              </select>
+        </div>
+        <div class="LBtn">
+            <a href="#" class="btn_1">Save</a>
+            <a href="#" class="btn_2">Submit for Approval</a>
+            <a href="#" class="btn_3">Cancel</a>  
+        </div>
+    </div>
+
+{% endblock %}
+
+                
+
+
+
+
+
+{#{% extends 'layouts/layout.html.twig' %}#}
+
+
+{#{% block content %}#}
+
+{#    <div id="main-content" class="main-content mb-5">#}
+
+{#        <div class="page-header">#}
+{#            <h1>Name {{ treestand.ProductName }}</h1>#}
+{#			<h1>SKU {{ treestand.SKU }}</h1>#}
+{#			<h1>UPC {{ treestand.UPC }}</h1>#}
+{#			Global Trade Item Number {{ treestand.GlobalTradeItemNumber }}#}
+{#			{% if treestand.AssetAdvanced %}#}
+{#                {{ treestand.AssetAdvanced.thumbnail("content").html|raw }}#}
+{#            {% endif %}#}
+{#			Description {{ treestand.Description|raw }}#}
+{#ProductWidth {{ treestand.ProductWidth|raw }}#}
+{#			ProductHeight {{ treestand.ProductHeight|raw }}#}
+{#			ProductDepth {{ treestand.ProductDepth|raw }}#}
+{#Construction {{ treestand.Construction }}#}
+{#FootPlatform {{ treestand.FootPlatform }}#}
+{#SeatSize {{ treestand.SeatSize }}#}
+{#SeatStyle {{ treestand.SeatStyle }}#}
+{#SeatHeight {{ treestand.SeatHeight }}#}
+{#Packable {{ treestand.Packable }}#}
+{#Fastners {{ treestand.Fastners }}#}
+{#StandWeight {{ treestand.StandWeight }}#}
+{#TreeSize {{ treestand.TreeSize }}#}
+{#Dimensions {{ treestand.Dimensions }}#}
+{#EntranceWidth {{ treestand.EntranceWidth }}#}
+{#EntranceHeight {{ treestand.EntranceHeight }}#}
+{#TotalRoofKit {{ treestand.TotalRoofKit }}#}
+{#TotalHeight {{ treestand.TotalHeight }}#}
+{#HeightPerSection {{ treestand.HeightPerSection }}#}
+{#Section {{ treestand.Section }}#}
+{#TotalWeight {{ treestand.TotalWeight }}#}
+{#WeightPerSection {{ treestand.WeightPerSection }}#}
+{#MinimumTreeSize {{ treestand.MinimumTreeSize }}#}
+{#StepWidth {{ treestand.StepWidth }}#}
+{#WeightLimit {{ treestand.WeightLimit }}#}
+{#WeightRating {{ treestand.WeightRating }}#}
+{#Harness {{ treestand.Harness }}#}
+{#			Price Type {{ treestand.PriceType }}#}
+{#			Price {{ treestand.Price }}#}
+{#        </div>#}
+
+{#    </div>#}
+
+{#{% endblock %}#}

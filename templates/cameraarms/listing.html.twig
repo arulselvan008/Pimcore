@@ -1,0 +1,27 @@
+{# @var cameraarms \Pimcore\Model\DataObject\boxblinds #}
+
+{% extends 'layouts/layout.html.twig' %}
+
+
+{% block content %}
+
+	<div class="content_1">
+
+		{%  for cameraarms in cameraarms %}
+			{# @var cameraarms \Pimcore\Model\DataObject\BoxBlinds #}
+			<div class="FI_1">
+			    <a href="{{ path('pimcore_element', {'element': cameraarms}) }}">
+				<div class="Prod">
+					{% if cameraarms.AssetAdvanced %}
+						{{ cameraarms.AssetAdvanced.thumbnail("content").html|raw }}
+					{% endif %}
+				</div>
+				<h1>{{ cameraarms.ProductName }}</h1>
+				<h1>SKU: {{ cameraarms.SKU }}</h1>
+				<h1>UPC: {{ cameraarms.UPC }}</h1>					
+			</div>
+		{% endfor %}
+	
+	</div>
+
+{% endblock %}

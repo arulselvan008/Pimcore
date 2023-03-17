@@ -1,0 +1,87 @@
+{# @var apparel \Pimcore\Model\DataObject\apparel #}
+
+{% extends 'layouts/layout.html.twig' %}
+
+{% block content %}
+
+<form action="{{ path('save_post') }}" method="POST" >
+  <Body background="https://www.gomuddy.com/wp-content/uploads/2018/06/Muddy-Outdoors-high-quality-box-blinds-treestands-hunting-gear-trail-cameras-tree-stand-safety-harness-Copy.jpg" >
+    <div class="ItemName">
+        <h1 id="Button1" type="button" value="Click" onclick="switchVisible1();">{{ apparel.ProductName }}</h>
+    </div>
+    <div class="Left_Content">
+        <div class="Item_details">
+            <h1>TYPE: Apparel</h1>
+            <h1>SKU: {{ apparel.SKU }}</h1>
+            <h1>UPC: {{ apparel.UPC }}</h1>
+        </div>
+        <div class="Prod_Feature">
+            <h1>PRODUCT FEATURES</h1>
+            <input type="text" value ="{{ apparel.Description}}"></input>
+            
+        </div>
+        <div class="Prod_Specs">
+            <h1>PRODUCT SPECS</h1>
+            <ul style="list-style-type:circle">
+                MATERIAL:<input type="text" value ="{{ apparel.Material}}"></input><br /><br />
+                COLOR:<input type="text" value ="{{ apparel.Color}}"></input><br /><br />
+                LOGO:<input type="text" value ="{{ apparel.Logo}}"></input><br /><br />
+                NECKLINE:<input type="text" value ="{{ apparel.Neckline}}"></input><br /><br />
+                MATERIAL SPECS:<input type="text" value ={{ apparel.MaterialSpecs }}></input>
+            </ul>
+        </div>
+    </div>
+    <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+    <div class="Right_content">
+        <div class="Item_img">
+            {% if apparel.AssetAdvanced %}
+				{{ apparel.AssetAdvanced.thumbnail("content").html|raw }}
+			{% endif %}
+        </div>
+        {% block Assets %}
+			{% set additionalImages = apparel.Assets %}
+			{% set sum = 1 %}
+			{%  if(additionalImages) %}
+			
+					{% for image in additionalImages %}
+						<div class="Item_img_{{ sum }}">
+								{{ image.thumbnail.getHTML({imgAttributes: {class: 'img-thumbnail1 img-fluid'}})|raw }}
+						</div>
+					{% set sum = sum + 1 %}
+					{% endfor %}
+
+			{%  endif %}
+		{% endblock %}
+        <div class="ItemStatus">
+            <label for="Status">Item Status-</label>
+            <select name="Item Status" id="Status">
+                <option value="Active">Active</option>
+                <option value="Inactive">Inactive</option>
+              </select>
+        </div>
+        <div class="VAM">
+            <h1>View All Media</h1>
+        </div>
+        <div class="MSRP">
+ <h1>{{ apparel.PriceType }}: $ </h1><input type="text" id=" Price" value ={{ apparel.Price }} id=" newPrice" name="newPrice"></input>
+                                 {#<input id="Price" "value ={{ apparel.Price }} id=" newPrice" name="newPrice"></input>#}
+</div>
+<div class="Available">
+                <label for="Available">Item Availablility-{{ apparel.Availability }}</label>
+                <select  id ="newAvailability" name=value id="Available">
+                    <option value="In Stock">In Stock</option>
+                    <option value="Out of Stock">Out of Stock</option>
+                </select>
+            </div>
+<div class="LBtn">
+<input type="hidden" id="apparelID" name="apparelID" value="{{ apparel.ID }}">
+</p>
+
+<input type="submit" value="Save" class="btn_1" />
+</div>
+
+</div>
+</Body>
+</form>
+
+{% endblock %}

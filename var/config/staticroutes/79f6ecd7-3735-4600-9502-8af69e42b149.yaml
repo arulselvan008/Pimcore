@@ -1,0 +1,15 @@
+pimcore:
+    staticroutes:
+        definitions:
+            79f6ecd7-3735-4600-9502-8af69e42b149:
+                name: Edit
+                pattern: /\/en\/edit_product_form/
+                reverse: /\/en\/edit_product_form/
+                controller: 'App\Controller\ApparelController::editAction'
+                variables: apparel
+                defaults: ''
+                siteId: {  }
+                methods: {  }
+                priority: 1
+                creationDate: 1672055975
+                modificationDate: 1672123880

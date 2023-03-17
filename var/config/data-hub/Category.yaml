@@ -1,0 +1,102 @@
+pimcore_data_hub:
+    configurations:
+        Category:
+            general:
+                active: true
+                type: dataImporterDataObject
+                name: Category
+                description: ''
+                group: ''
+                path: null
+                modificationDate: 1677068550
+                createDate: 1677064477
+            loaderConfig:
+                type: upload
+                settings:
+                    uploadFilePath: Category/upload.import
+            interpreterConfig:
+                type: xlsx
+                settings:
+                    skipFirstRow: true
+                    sheetName: Sheet1
+            resolverConfig:
+                elementType: dataObject
+                dataObjectClassId: ProductCategoryGSM
+                loadingStrategy:
+                    type: notLoad
+                createLocationStrategy:
+                    type: findParent
+                    settings:
+                        findStrategy: id
+                        attributeDataObjectClassId: ''
+                        attributeName: ''
+                        attributeLanguage: ''
+                        dataSourceIndex: '3'
+                        fallbackPath: /new/Category
+                locationUpdateStrategy:
+                    type: noChange
+                publishingStrategy:
+                    type: noChangePublishNew
+            processingConfig:
+                executionType: parallel
+                idDataIndex: ''
+            mappingConfig:
+                -
+                    label: Key
+                    dataSourceIndex:
+                        - '0'
+                    transformationResultType: default
+                    dataTarget:
+                        type: direct
+                        settings:
+                            fieldName: key
+                            language: ''
+                            writeIfTargetIsNotEmpty: true
+                            writeIfSourceIsEmpty: true
+                    transformationPipeline: {  }
+                -
+                    label: 'Category [0]'
+                    dataSourceIndex:
+                        - '0'
+                    transformationResultType: default
+                    dataTarget:
+                        type: direct
+                        settings:
+                            fieldName: ProductCategory
+                            language: ''
+                            writeIfTargetIsNotEmpty: true
+                            writeIfSourceIsEmpty: true
+                    transformationPipeline: {  }
+                -
+                    label: 'Brand Id [2]'
+                    dataSourceIndex:
+                        - '2'
+                    settings:
+                        loadStrategy: id
+                        attributeDataObjectClassId: ''
+                        attributeName: ''
+                        attributeLanguage: ''
+                    transformationResultType: dataObject
+                    dataTarget:
+                        type: direct
+                        settings:
+                            fieldName: Brand
+                            language: ''
+                            writeIfTargetIsNotEmpty: true
+                            writeIfSourceIsEmpty: true
+                    transformationPipeline:
+                        -
+                            settings:
+                                loadStrategy: id
+                                attributeDataObjectClassId: ''
+                                attributeName: ''
+                                attributeLanguage: ''
+                            type: loadDataObject
+            executionConfig:
+                scheduleType: recurring
+                cronDefinition: ''
+                scheduledAt: ''
+            permissions:
+                user: {  }
+                role: {  }
+            workspaces: {  }

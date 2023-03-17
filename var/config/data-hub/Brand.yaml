@@ -1,0 +1,97 @@
+pimcore_data_hub:
+    configurations:
+        Brand:
+            general:
+                type: dataImporterDataObject
+                name: Brand
+                description: ''
+                group: ''
+                active: false
+                path: null
+                modificationDate: 1677064515
+                createDate: 1677061468
+            loaderConfig:
+                type: upload
+                settings:
+                    uploadFilePath: Brand/upload.import
+            interpreterConfig:
+                type: xlsx
+                settings:
+                    skipFirstRow: true
+                    sheetName: Sheet1
+            resolverConfig:
+                elementType: dataObject
+                dataObjectClassId: BRANDSGSM
+                loadingStrategy:
+                    type: notLoad
+                createLocationStrategy:
+                    type: staticPath
+                    settings:
+                        path: '/For Test Import/Brands'
+                locationUpdateStrategy:
+                    type: noChange
+                publishingStrategy:
+                    type: noChangePublishNew
+            processingConfig:
+                executionType: parallel
+                idDataIndex: ''
+            mappingConfig:
+                -
+                    label: Name
+                    dataSourceIndex:
+                        - '0'
+                    transformationResultType: default
+                    dataTarget:
+                        type: direct
+                        settings:
+                            fieldName: BrandName
+                            language: ''
+                            writeIfTargetIsNotEmpty: true
+                            writeIfSourceIsEmpty: true
+                    transformationPipeline: {  }
+                -
+                    label: 'Image [1]'
+                    dataSourceIndex:
+                        - '2'
+                    settings:
+                        parentFolder: '/For Test Import/Brand Logos'
+                        useExisting: 'on'
+                        overwriteExisting: 'on'
+                        pregMatch: ''
+                    transformationResultType: asset
+                    dataTarget:
+                        type: direct
+                        settings:
+                            fieldName: BrandLogo
+                            language: ''
+                            writeIfTargetIsNotEmpty: true
+                            writeIfSourceIsEmpty: true
+                    transformationPipeline:
+                        -
+                            settings:
+                                parentFolder: '/For Test Import/Brand Logos'
+                                useExisting: 'on'
+                                overwriteExisting: 'on'
+                                pregMatch: ''
+                            type: importAsset
+                -
+                    label: Key
+                    dataSourceIndex:
+                        - '0'
+                    transformationResultType: default
+                    dataTarget:
+                        type: direct
+                        settings:
+                            fieldName: key
+                            language: ''
+                            writeIfTargetIsNotEmpty: true
+                            writeIfSourceIsEmpty: true
+                    transformationPipeline: {  }
+            executionConfig:
+                scheduleType: recurring
+                cronDefinition: ''
+                scheduledAt: ''
+            permissions:
+                user: {  }
+                role: {  }
+            workspaces: {  }

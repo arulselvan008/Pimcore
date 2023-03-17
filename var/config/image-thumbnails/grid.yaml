@@ -1,0 +1,21 @@
+pimcore:
+    assets:
+        image:
+            thumbnails:
+                definitions:
+                    grid:
+                        items: {  }
+                        medias: {  }
+                        name: grid
+                        description: ''
+                        group: E-Commerce
+                        format: SOURCE
+                        quality: 85
+                        highResolution: 0.0
+                        preserveColor: false
+                        preserveMetaData: false
+                        rasterizeSVG: false
+                        downloadable: false
+                        modificationDate: 1671600111
+                        creationDate: 1671600066
+                        preserveAnimation: false

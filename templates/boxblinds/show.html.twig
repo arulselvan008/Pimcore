@@ -1,0 +1,73 @@
+{# @var boxblinds\Pimcore\Model\DataObject\boxblinds #}
+
+{% extends 'layouts/layout.html.twig' %}
+
+
+{% block content %}
+
+    <div class="ItemName">
+        <h1>{{ boxblinds.ProductName }}</h1>
+    </div>
+    <div class="Left_Content">
+        <div class="Item_details">
+            <h1>TYPE: Boxblinds</h1>
+            <h1>SKU: {{ boxblinds.SKU }}</h1>
+            <h1>UPC: {{ boxblinds.UPC }}</h1>
+        </div>
+        <div class="Prod_Feature">
+            <h1>PRODUCT FEATURES</h1>
+            {{ boxblinds.Description|raw }}
+        </div>
+        
+    </div>
+    <div class="Right_content">
+        <div class="Item_img">
+            {% if boxblinds.AssetAdvanced %}
+				{{ boxblinds.AssetAdvanced.thumbnail("content").html|raw }}
+			{% endif %}
+        </div>
+        {% block Assets %}
+			{% set additionalImages = boxblinds.Assets %}
+			{% set sum = 1 %}
+			{%  if(additionalImages) %}
+
+					{% for image in additionalImages %}
+
+						<div class="Item_img_{{ sum }}">
+							
+								{{ image.thumbnail.getHTML({imgAttributes: {class: 'img-thumbnail1 img-fluid'}})|raw }}
+							
+						</div>
+					{% set sum = sum + 1 %}
+					{% endfor %}
+
+			{%  endif %}
+		{% endblock %}
+        <div class="ItemStatus">
+            <label for="Status">Item Status-</label>
+            <select name="Item Status" id="Status">
+                <option value="Active">Active</option>
+                <option value="Inactive">Inactive</option>
+              </select>
+        </div>
+        <div class="VAM">
+            <h1>View All Media</h1>
+        </div>
+        <div class="MSRP">
+            <h1>{{ boxblinds.PriceType }} : ${{ boxblinds.Price }} </h1>
+        </div>
+        <div class="Available">
+            <label for="Available">Item Availablility-</label>
+            <select name="Availablility" id="Available">
+                <option value="In Stock">In Stock</option>
+                <option value="Out of Stock">Out of Stock</option>
+              </select>
+        </div>
+        <div class="LBtn">
+            <a href="#" class="btn_1">Save</a>
+            <a href="#" class="btn_2">Submit for Approval</a>
+            <a href="#" class="btn_3">Cancel</a>  
+        </div>
+    </div>
+
+{% endblock %}

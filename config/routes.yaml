@@ -1,0 +1,11 @@
+_pimcore:
+    resource: "@PimcoreCoreBundle/Resources/config/routing.yml"
+
+app:
+    resource: "../src/Controller/"
+    type: annotation
+
+boxblinds:
+    path:       /products/index/products_list_api
+    controller: App\Controller\BoxBlindsController::index
+    methods:    GET

@@ -1,0 +1,123 @@
+{# @var rangefinders \Pimcore\Model\DataObject\rangefinders #}
+
+{% extends 'layouts/layout.html.twig' %}
+
+
+{% block content %}
+
+    <div class="ItemName">
+        <h1>{{ rangefinders.ProductName }}</h1>
+    </div>
+    <div class="Left_Content">
+        <div class="Item_details">
+            <h1>TYPE: rangefinders</h1>
+            <h1>SKU: {{ rangefinders.SKU }}</h1>
+            <h1>UPC: {{ rangefinders.UPC }}</h1>
+            <h1>Global Trade Item Number: {{ rangefinders.GlobalTradeItemNumber }}</h1>
+        </div>
+        <div class="Prod_Feature">
+            <h1>PRODUCT FEATURES</h1>
+            {{ rangefinders.Description|raw }}
+        </div>
+        <div class="Prod_Specs">
+            <h1>PRODUCT SPECS</h1>
+            <ul style="list-style-type:circle">
+                <p><b>PRODUCT WIDTH:</b>{{ rangefinders.ProductWidth }}</p>
+                <p><b>PRODUCT HEIGHT:</b>{{ rangefinders.ProductHeight }}</p>
+                <p><b>PRODUCT DEPTH:</b>{{ rangefinders.ProductDepth }}</p>
+                <p><b>RANGE:</b>{{ rangefinders.Range }}</p>
+                <p><b>MAGNIFICATION:</b>{{ rangefinders.Magnification }}</p>
+                <p><b>LENS DIAMETER:</b>{{ rangefinders.LensDiameter }}</p>
+                <p><b>WATER PROTECTION LEVEL:</b>{{ rangefinders.WaterProtectionLevel }}</p>
+                <p><b>SOURCE OF POWER:</b>{{ rangefinders.SourceOfPower }}</p>
+                <p><b>TECHNOLOGIES:</b>{{ rangefinders.Technologies }}</p>
+            </ul>
+        </div>
+    </div>
+    <div class="Right_content">
+        <div class="Item_img">
+            {% if rangefinders.AssetAdvanced %}
+				{{ rangefinders.AssetAdvanced.thumbnail("content").html|raw }}
+			{% endif %}
+        </div>
+        {% block Assets %}
+			{% set additionalImages = rangefinders.Assets %}
+			{% set sum = 1 %}
+			{%  if(additionalImages) %}
+
+					{% for image in additionalImages %}
+
+						<div class="Item_img_{{ sum }}">
+							
+								{{ image.thumbnail.getHTML({imgAttributes: {class: 'img-thumbnail1 img-fluid'}})|raw }}
+							
+						</div>
+					{% set sum = sum + 1 %}
+					{% endfor %}
+
+			{%  endif %}
+		{% endblock %}
+		<div class="ItemStatus">
+            <label for="Status">Item Status-</label>
+            <select name="Item Status" id="Status">
+                <option value="Active">Active</option>
+                <option value="Inactive">Inactive</option>
+              </select>
+        </div>
+        <div class="VAM">
+            <h1>View All Media</h1>
+        </div>
+        <div class="MSRP">
+            <h1>{{ rangefinders.PriceType }} : ${{ rangefinders.Price }} </h1>
+        </div>
+        <div class="Available">
+            <label for="Available">Item Availablility-</label>
+            <select name="Availablility" id="Available">
+                <option value="In Stock">In Stock</option>
+                <option value="Out of Stock">Out of Stock</option>
+              </select>
+        </div>
+        <div class="LBtn">
+            <a href="#" class="btn_1">Save</a>
+            <a href="#" class="btn_2">Submit for Approval</a>
+            <a href="#" class="btn_3">Cancel</a>  
+        </div>
+    </div>
+
+{% endblock %}
+
+
+
+{#{% extends 'layouts/layout.html.twig' %}#}
+
+
+{#{% block content %}#}
+
+{#    <div id="main-content" class="main-content mb-5">#}
+
+{#        <div class="page-header">#}
+{#            <h1>Name {{ rangefinders.ProductName }}</h1>#}
+{#			<h1>SKU {{ rangefinders.SKU }}</h1>#}
+{#			<h1>UPC {{ rangefinders.UPC }}</h1>#}
+{#			Global Trade Item Number {{ rangefinders.GlobalTradeItemNumber }}#}
+{#			{% if rangefinders.AssetAdvanced %}#}
+{#            {{ rangefinders.AssetAdvanced.thumbnail("content").html|raw }}#}
+{#            {% endif %}#}
+{#            Description {{ rangefinders.Description|raw }}#}
+{#			ProductWidth {{ rangefinders.ProductWidth|raw }}#}
+{#			ProductHeight {{ rangefinders.ProductHeight|raw }}#}
+{#			ProductDepth {{ rangefinders.ProductDepth|raw }}#}
+{#			Range {{ rangefinders.Range|raw }}#}
+{#			Magnification {{ rangefinders.Magnification }}#}
+{#			LensDiameter {{ rangefinders.LensDiameter|raw }}#}
+{#			WaterProtectionLevel {{ rangefinders.WaterProtectionLevel }}#}
+{#			SourceOfPower {{ rangefinders.SourceOfPower }}#}
+{#			Technologies {{ rangefinders.Technologies }}#}
+{#			Price Type {{ rangefinders.PriceType }}#}
+{#			Price {{ rangefinders.Price }}#}
+{#		</div>#}
+
+{#    </div>#}
+
+{#{% endblock %}#}
+			

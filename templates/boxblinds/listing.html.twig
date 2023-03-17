@@ -1,0 +1,27 @@
+{# @var boxblinds \Pimcore\Model\DataObject\boxblinds #}
+
+{% extends 'layouts/layout.html.twig' %}
+
+
+{% block content %}
+
+	<div class="content_1">
+
+		{%  for boxblinds in boxblinds %}
+			{# @var boxblinds \Pimcore\Model\DataObject\BoxBlinds #}
+			<div class="FI_1">
+			    <a href="{{ path('pimcore_element', {'element': boxblinds}) }}">
+				<div class="Prod">
+					{% if boxblinds.AssetAdvanced %}
+						{{ boxblinds.AssetAdvanced.thumbnail("content").html|raw }}
+					{% endif %}
+				</div>
+				<h1>{{ boxblinds.ProductName }}</h1>
+				<h1>SKU: {{ boxblinds.SKU }}</h1>
+				<h1>UPC: {{ boxblinds.UPC }}</h1>					
+			</div>
+		{% endfor %}
+	
+	</div>
+
+{% endblock %}

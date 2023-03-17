@@ -1,0 +1,26 @@
+{# @var climbingsystems \Pimcore\Model\DataObject\climbingsystems #}
+
+{% extends 'layouts/layout.html.twig' %}
+
+
+{% block content %}
+
+	<div class="content_1">
+
+		{%  for climbingsystems in climbingsystems %}
+			{# @var climbingsystems \Pimcore\Model\DataObject\BoxBlinds #}
+			<div class="FI_1">
+				<div class="Prod">
+					{% if climbingsystems.AssetAdvanced %}
+						{{ climbingsystems.AssetAdvanced.thumbnail("content").html|raw }}
+					{% endif %}
+				</div>
+				<h1>{{ climbingsystems.ProductName }}</h1>
+				<h1>SKU: {{ climbingsystems.SKU }}</h1>
+				<h1>UPC: {{ climbingsystems.UPC }}</h1>					
+			</div>
+		{% endfor %}
+	
+	</div>
+
+{% endblock %}

@@ -1,0 +1,14 @@
+pimcore:
+    documents:
+        doc_types:
+            definitions:
+                18b6d7c5-6be0-466a-afd1-03434beef019:
+                    name: Content-Page
+                    group: ''
+                    controller: 'App\Controller\ContentController::defaultAction'
+                    template: null
+                    type: page
+                    priority: 0
+                    creationDate: 1676960820
+                    modificationDate: 1676960843
+                    staticGeneratorEnabled: null

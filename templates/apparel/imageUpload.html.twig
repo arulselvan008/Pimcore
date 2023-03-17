@@ -1,0 +1,102 @@
+{# @var apparel \Pimcore\Model\DataObject\apparel #}
+
+{% extends 'layouts/layout.html.twig' %}
+
+{% block content %}
+<form action="{{ path('image_upload') }}" method="POST">
+      <div class="AddProduct">
+        <h3>Product Details & Media</h3>
+        
+        <div>
+          <div class="form-main">
+            <div class="form-text">
+              <label for="AddProduct">Product Name:</label>
+              <label for="AddProduct">SKU:</label>
+              <label for="AddProduct">UPC:</label>
+              <label for="AddProduct">Global Trade Item Number:</label>
+              <label for="AddProduct">Size:</label>
+            </div>
+
+            <div class="form-input">
+              <input type="text" class="class-input" id="newProductName" name="newProductName"/>
+              <input type="text" class="class-input" id="SKU" name="SKU" />
+              <input type="text" class="class-input" id="UPC" name="UPC" />
+              <input type="text" class="class-input" id="GlobalTradeItemNumber" name="GlobalTradeItemNumber" />
+              {#<input type="text" class="class-input" id="Size" name="Size" />#}
+            <select name="Size" id="Size">
+              <option value="small">Small</option>
+              <option value="medium">Medium</option>
+              <option value="large">Large</option>
+              <option value="xl">XL</option>
+              {#<option value="2x">2X</option>#}
+              {#<option value="3x">3X</option>#}
+            </select>
+            </div>
+          </div>
+        </div>
+        
+        {#Image Upload#}
+        {#<form action="upload.php" method="post" enctype="multipart/form-data">#}
+        {#<input type="file" name="fileToUpload" id="fileToUpload">#}
+        {#<input type="submit" value="Upload Image" name="submit">#}
+        <br></br>
+        <form action="upload.php" method="post" enctype="multipart/form-data">
+         Select image to upload:
+        <input type="file" name="fileToUpload" id="fileToUpload">
+        <input type="submit" value="Upload Image" name="submit">
+        </form>
+
+        <h3>Product Features</h3>
+
+        <div class="form-main-1">
+          <div class="form-text">
+            <label for="AddProduct">Description:</label>
+          </div>
+          <div class="form-input">
+            <input type="text" id="Description" name="Description" />
+          </div>
+        </div>
+        <h3>Product Specs</h3>
+        <div class="form-main gap">
+
+          <div class="form-text">
+            <label for="AddProduct">Material:</label>
+            <label for="AddProduct">Color:</label>
+            <label for="AddProduct">Logo:</label>
+            <label for="AddProduct">Neck Line:</label>
+            <label for="AddProduct">Material Specs:</label>
+
+          </div>
+          <div class="form-input">
+
+            <input type="text" class="class-input" id="Material" name="Material"/>
+            <input type="text" class="class-input" id="Color" name="Color" />
+            <input type="text" class="class-input" id="Logo" name="Logo" />
+            <input  type="text" class="class-input"  id="Neckline"  name="Neckline"/>
+            <input  type="text" class="class-input"  id="materialSpecs"  name="materialSpecs"/>
+          </div>
+        </div>
+
+        <h3>Pricing</h3>
+        <div class="form-main gap">
+          <div class="form-text">
+            <label for="AddProduct">Price Type:</label>
+            <label for="AddProduct">Price:</label>
+            <label for="AddProduct">Availability:</label>
+            <label for="AddProduct">Item Status:</label>
+          </div>
+          <div class="form-input">
+            <input type="text" class="class-input" id="PriceType" name="PriceType"/>
+            <input type="text" class="class-input" id="price" name="price" />
+            <input type="text" class="class-input" id="Availability" name="Availability"/>
+            <input type="text" class="class-input" id="ItemStatus"  name="ItemStatus"/>
+          </div>
+        </div>
+      </div>
+      
+      <div class="LBtn">
+         <input type="submit"  class="button-class" value="SUBMIT" class="btn_1"/>
+      </div>
+
+    </form>
+{% endblock %}

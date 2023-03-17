@@ -1,0 +1,568 @@
+<!doctype html>
+<html lang="{{ app.request.locale }}">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        {# adding styles #}
+        {% do pimcore_head_style().appendStyle('static/css/stealthcam.css') %}
+        <style>
+            body{
+				background-color:white;
+			}
+
+			.Header {
+				background-color: white;
+				border: 2px solid black;
+				height: 130px;
+			}
+
+			.Header .button{
+				position: absolute;
+				top: 60px;
+				left: 750px;
+				justify-content: center;
+				align-items: center;
+				transform: translate(-50%,-50%);
+			}
+
+			.Header .button .btn{
+				border: 2px solid black;
+				padding: 5px 20px;
+				color: black;
+				transition: 0.5px ease;
+				font-size: 18px;
+				text-decoration: none;
+				font-weight: bold;
+			}
+			.Header .button .btn:hover{
+				background-color: bisque;
+				color: black;
+			}
+			.Header .GSM img{
+				width: 255px;
+				float: left;
+				height: 102px;
+				padding-left: 30px;
+				padding-top: 10px;
+			}
+           
+   /*        .Header .StealthCam img{*/
+			/*	width: 245px;*/
+			/*	float: right;*/
+			/*	height: 120px;*/
+			/*	padding-right: 3px;*/
+			/*	padding-top: 5px;*/
+			/*}*/
+
+			/*.Header .StealthCam img{*/
+			/*	width: 255px;*/
+			/*	float: right;*/
+			/*	height: 255px;*/
+			/*	padding-right: 10px;*/
+			/*	padding-top: 5px;*/
+			/*}*/
+			.StealthCam_img{
+			   width: 320px;
+				float: right;
+				height: 165px;
+				padding-right: 3px;
+				padding-top: 5px; 
+			}
+
+
+			.ItemName {
+				position: absolute;
+				top: 130px;
+				left: 650px;
+				font-size: 8px;
+				border: 1px solid rgba(0, 0, 0, 0.37);
+				background-color: rgb(165, 161, 161);
+				padding-left: 20px;
+				padding-right: 20px;
+				font-family: Arial, Helvetica, sans-serif;
+			}
+
+
+
+			.Left_Content .Item_details{
+				list-style: none;
+				margin-left: 80px;
+				margin-top: 100px;
+				font-size: 30px;
+				width: 250px;
+				font-family: Arial, Helvetica, sans-serif;
+			}
+
+			.Left_Content .Item_details h1{
+				font-size: 15px;
+				border: 2px solid rgba(0, 0, 0, 0.37);
+				padding: 1px;
+				text-align: center;
+				background-color: rgb(165, 161, 161);
+				font-family: Arial, Helvetica, sans-serif;
+			}
+
+			.Left_Content .Description{
+				list-style: none;
+				margin-left: 80px;
+				font-size: 15;
+				width: 600px;
+				border: 2px solid rgba(0, 0, 0, 0.37);
+				padding-left: 20px;
+				background-color: rgb(165, 161, 161);
+				font-family: Arial, Helvetica, sans-serif;
+			}
+
+			.Left_Content .Description h1{
+				font-size: 15px;
+				font-weight: bold;
+				font-family: Arial, Helvetica, sans-serif;
+			}
+			.Left_Content .Description h2{
+				margin-top: 0%;
+				font-size: 15px;
+				font-weight: lighter;
+				font-family: Arial, Helvetica, sans-serif;
+			}
+
+
+			.Left_Content .Prod_Feature{
+				list-style: none;
+				margin-top: 10px;
+				margin-left: 80px;
+				font-size: 15;
+				width: 600px;
+				border: 2px solid rgba(0, 0, 0, 0.37);
+				padding-left: 20px;
+				font-family: Arial, Helvetica, sans-serif;
+			}
+
+			.Left_Content .Prod_Feature h1{
+				font-size: 15px;
+				font-weight: bold;
+				font-family: Arial, Helvetica, sans-serif;
+			}
+			.Left_Content .Prod_Feature ul{
+				font-size: 15px;
+				margin-top: 2px;
+				font-family: Arial, Helvetica, sans-serif;
+			}
+
+			.Left_Content .Prod_Specs{
+				list-style: none;
+				margin-top: 10px;
+				margin-left: 80px;
+				font-size: 15;
+				width: 600px;
+				border: 2px solid rgba(0, 0, 0, 0.37);
+				padding-left: 20px;
+				font-family: Arial, Helvetica, sans-serif;
+			}
+			.Left_Content .Prod_Specs h1{
+				font-size: 15px;
+				font-weight: bold;
+				font-family: Arial, Helvetica, sans-serif;
+			}
+
+			.Left_Content .Prod_Specs ul{
+				font-size: 15px;
+				margin-top: 2px;
+				font-family: Arial, Helvetica, sans-serif;
+				padding-left: 0;
+			}
+
+			.Left_Content .Prod_Specs ul p{
+				font-size: 15px;
+				margin: 0.5%;
+				font-family: Arial, Helvetica, sans-serif;
+			}
+
+			.Left_Content .Details{
+				list-style: none;
+				margin-top: 10px;
+				margin-left: 80px;
+				font-size: 15;
+				width: 600px;
+				border: 2px solid rgba(0, 0, 0, 0.37);
+				padding-left: 20px;
+				font-family: Arial, Helvetica, sans-serif;
+			}
+			.Left_Content .Details h1{
+				font-size: 15px;
+				font-weight: bold;
+				font-family: Arial, Helvetica, sans-serif;
+			}
+			.Left_Content .Details ul{
+				font-size: 15px;
+				margin-top: 2px;
+				font-family: Arial, Helvetica, sans-serif;
+			}
+			.Left_Content .Details ul p{
+				font-size: 15px;
+				margin: 0.5%;
+				font-family: Arial, Helvetica, sans-serif;
+			}
+
+
+			.Right_content .Item_img img{
+				width: 200px;
+				height: auto;
+				float: right;
+				margin-top: -35%;
+				padding-right: 320px;
+			}
+
+			.Right_content .Item_img_1 img{
+				width: 100px;
+				height: 100px;
+				float: right;
+				margin-top: -23%;
+				border: 2px solid black;
+				margin-right: 430px;
+			}
+			.Right_content .Item_img_2 img{
+				width: 100px;
+				height: 100px;
+				float: right;
+				margin-top: -23%;
+				border: 2px solid black;
+				margin-right: 280px;
+			}
+			.Right_content .Item_img_3 img{
+				width: 100px;
+				height: 100px;
+				float: right;
+				margin-top: -15%;
+				border: 2px solid black;
+				margin-right: 430px;
+			}
+			.Right_content .Item_img_4 img{
+				width: 100px;
+				height: 100px;
+				float: right;
+				margin-top: -15%;
+				border: 2px solid black;
+				margin-right: 280px;
+			}
+
+			.Right_content .ItemStatus{
+				border: 1px solid black;
+				background-color: white;
+				margin-right: 320px;
+				float: right;
+				margin-top: -3%;
+				padding: 4px;
+				font-weight: bold;
+				background-color: rgb(178, 245, 178);
+			}
+
+			.Right_content .Available{
+				border: 1px solid black;
+				background-color: white;
+				margin-right: -165px;
+				float: right;
+				margin-top: 50px;
+				padding: 4px;
+				font-weight: bold;
+				background-color: rgb(178, 245, 178);
+			}
+
+			.Right_content .Input{
+
+				font-size: 8px;
+				height: 25px;
+				width: 100px;
+				background-color: white;
+				margin-right: 300px;
+				float: right;
+				margin-top: 0;
+				padding: 0px;
+				font-weight: bold;
+			}
+			.Right_content .MSRP{
+
+				font-size: 8px;
+				height: 25px;
+				width: 140px;
+				margin-right: 330px;
+				float: right;
+				margin-top: 0;
+				padding: 0px;
+				font-weight: bold;
+			}
+
+			.Right_content .VAM{
+				position: absolute;
+				top: 715px;
+				left: 1150px;
+				font-size: 5px;
+				border: 1px solid rgba(0, 0, 0, 0.37);
+				background-color: orange;
+				padding-left: 0.5px;
+				padding-right: 0.5px;
+				font-family: Arial, Helvetica, sans-serif;
+			}
+
+			.Right_content .LBtn{
+				position: absolute;
+				top: 1000px;
+				left: 1200px;
+				justify-content: center;
+				align-items: center;
+				transform: translate(-50%,-50%);
+			}
+			.Right_content .LBtn .btn_1,.btn_2,.btn_3{
+				border: 2px solid black;
+				padding: 5px 20px;
+				color: black;
+				transition: 0.5px ease;
+				font-size: 9px;
+				text-decoration: none;
+				font-weight: bold;
+			}
+
+			.Right_content .LBtn .btn_1{
+				background-color: grey;
+			}
+			.Right_content .LBtn .btn_2{
+				background-color: rgb(75, 218, 75);
+			}
+			.Right_content .LBtn .btn_3{
+				background-color: rgb(202, 22, 22);
+			}
+			
+			
+			.Line_Heading_1{
+				position: absolute;
+				top: 150px;
+				left: 650px;
+				font-size: 12px;
+			}
+
+			.Line_Heading_2{
+				position: absolute;
+				top: 650px;
+				left: 675px;
+				font-size: 12px;
+			}
+
+			.content_1 {
+                float: left;
+                justify-content: center;
+                align-items: center;
+                padding: 10px;
+            }
+
+			.content_1 .FI_1 {
+                list-style: none;
+                margin-top: 150px;
+                font-size: 12px;
+                width: 14%;
+                display: inline-block;
+                margin-left: 5%;
+            }
+			.content_1 .FI_1 h1{
+				font-size: 10px;
+				border: 2px solid black;
+				padding: 1px;
+				text-align: center;
+				background-color: bisque;
+			}
+			.content_1 .FI_2{
+				list-style: none;
+				margin-left: 80px;
+				margin-top: 150px;
+				font-size: 12;
+			}
+			.content_1 .FI_2 h1{
+				font-size: 10px;
+				border: 2px solid black;
+				padding: 1px;
+				text-align: center;
+				background-color: bisque;
+			}
+			.content_1 .FI_3{
+				list-style: none;
+				margin-left: 80px;
+				margin-top: 150px;
+				font-size: 12;
+			}
+			.content_1 .FI_3 h1{
+				font-size: 10px;
+				border: 2px solid black;
+				padding: 1px;
+				text-align: center;
+				background-color: bisque;
+			}
+			.content_1 .FI_4{
+				list-style: none;
+				margin-left: 80px;
+				margin-top: 150px;
+				font-size: 12;
+			}
+			.content_1 .FI_4 h1{
+				font-size: 10px;
+				border: 2px solid black;
+				padding: 1px;
+				text-align: center;
+				background-color: bisque;
+			}
+			.content_1 .FI_5{
+				list-style: none;
+				margin-left: 80px;
+				margin-top: 150px;
+				font-size: 12;
+			}
+			.content_1 .FI_5 h1{
+				font-size: 10px;
+				border: 2px solid black;
+				padding: 1px;
+				text-align: center;
+				background-color: bisque;
+			}
+
+
+			.content_2{
+				float: left;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				padding: 10px;
+				
+			}
+
+			.content_2 .FI_1{
+				list-style: none;
+				margin-left: 80px;
+				margin-top: 150px;
+				font-size: 12;
+			}
+			.content_2 .FI_1 h1{
+				font-size: 10px;
+				border: 2px solid black;
+				padding: 1px;
+				text-align: center;
+				background-color: bisque;
+			}
+			.content_2 .FI_2{
+				list-style: none;
+				margin-left: 80px;
+				margin-top: 150px;
+				font-size: 12;
+			}
+			.content_2 .FI_2 h1{
+				font-size: 10px;
+				border: 2px solid black;
+				padding: 1px;
+				text-align: center;
+				background-color: bisque;
+			}
+			.content_2 .FI_3{
+				list-style: none;
+				margin-left: 80px;
+				margin-top: 150px;
+				font-size: 12;
+			}
+			.content_2 .FI_3 h1{
+				font-size: 10px;
+				border: 2px solid black;
+				padding: 1px;
+				text-align: center;
+				background-color: bisque;
+			}
+			.content_2 .FI_4{
+				list-style: none;
+				margin-left: 80px;
+				margin-top: 150px;
+				font-size: 12;
+			}
+			.content_2 .FI_4 h1{
+				font-size: 10px;
+				border: 2px solid black;
+				padding: 1px;
+				text-align: center;
+				background-color: bisque;
+			}
+			.content_2 .FI_5{
+				list-style: none;
+				margin-left: 80px;
+				margin-top: 150px;
+				font-size: 12;
+			}
+			.content_2 .FI_5 h1{
+				font-size: 10px;
+				border: 2px solid black;
+				padding: 1px;
+				text-align: center;
+				background-color: bisque;
+			}
+
+			.content_1 .FI_1 .Prod img{
+				width: 200px;
+				height: 250px;
+			}
+			.content_1 .FI_2 .Prod img{
+				width: 200px;
+				height: 250px;
+			}
+			.content_1 .FI_3 .Prod img{
+				width: 200px;
+				height: 250px;
+			}
+			.content_1 .FI_4 .Prod img{
+				width: 200px;
+				height: 250px;
+			}
+			.content_1 .FI_5 .Prod img{
+				width: 200px;
+				height: 250px;
+			}
+
+			.content_2 .FI_1 .Prod img{
+				width: 200px;
+				height: 250px;
+			}
+			.content_2 .FI_2 .Prod img{
+				width: 200px;
+				height: 250px;
+			}
+			.content_2 .FI_3 .Prod img{
+				width: 200px;
+				height: 250px;
+			}
+			.content_2 .FI_4 .Prod img{
+				width: 200px;
+				height: 250px;
+			}
+			.content_2 .FI_5 .Prod img{
+				width: 200px;
+				height: 250px;
+			}
+        </style>
+    </head>
+    <body>
+	<div class="Header">
+        <div class="GSM">
+            {#<img src="{{ asset('/Logo/gsm-logo-light.webp') }}"/>#}
+              <img src="{{ asset('/GSM Outdoors/01 GSM Outdoors Logo/GSM-LOGO.png') }}"/>
+        </div>
+        
+        <div class="button">
+            <a href="#" class="btn">BLINDS</a>
+            <a href="#" class="btn">TREE STANDS</a>
+            <a href="#" class="btn">SAFETY</a>
+            <a href="#" class="btn">CAMERAS</a>
+            <a href="#" class="btn">ACCESSORIES</a>
+        </div>
+        <div class="StealthCam_img">
+            <img src="{{ asset('/GSM Outdoors/Stealth Cam/Brand logo/PNG/Stealth Cam Logo_WhtBkg.png') }}"width=100% height=100%/>
+        </div>
+    </div>
+        <main role="main">
+
+                {{ block('content') }}
+
+        </main>
+    </body>
+</html>

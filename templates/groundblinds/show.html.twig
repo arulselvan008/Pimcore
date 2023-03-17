@@ -1,0 +1,140 @@
+{# @var groundblinds \Pimcore\Model\DataObject\groundblinds #}
+
+{% extends 'layouts/layout.html.twig' %}
+
+
+{% block content %}
+
+    <div class="ItemName">
+        <h1>{{ groundblinds.ProductName }}</h1>
+    </div>
+    <div class="Left_Content">
+        <div class="Item_details">
+            <h1>TYPE: groundblinds</h1>
+            <h1>SKU: {{ groundblinds.SKU }}</h1>
+            <h1>UPC: {{ groundblinds.UPC }}</h1>
+            <h1>Global Trade Item Number: {{ groundblinds.GlobalTradeItemNumber }}</h1>
+        </div>
+        <div class="Prod_Feature">
+            <h1>PRODUCT FEATURES</h1>
+            {{ groundblinds.Description|raw }}
+        </div>
+        <div class="Prod_Specs">
+            <h1>PRODUCT SPECS</h1>
+            <ul style="list-style-type:circle">
+                <p><b>PRODUCT WIDTH:</b>{{ groundblinds.ProductWidth }}</p>
+                <p><b>PRODUCT HEIGHT:</b>{{ groundblinds.ProductHeight }}</p>
+                <p><b>PRODUCT DEPTH:</b>{{ groundblinds.ProductDepth }}</p>
+                <p><b>WINDOWS:</b>{{ groundblinds.Windows }}</p>
+                <p><b>CONSTRUCTION:</b>{{ groundblinds.Construction }}</p>
+                <p><b>SHOOTING WIDTH:</b>{{ groundblinds.ShootingWidth }}</p>
+                <p><b>STANDING HEIGHT:</b>{{ groundblinds.StandingHeight }}</p>
+                <p><b>HEIGHT TO BOTTOM OF WINDOWS:</b>{{ groundblinds.HeightToBottomOfWindows }}</p>
+                <p><b>CARRYING BAG:</b>{{ groundblinds.CarryingBag }}</p>
+                <p><b>STAKES:</b>{{ groundblinds.Stakes }}</p>
+                <p><b>DOOR:</b>{{ groundblinds.Door }}</p>
+                <p><b>TOTAL WEIGHT:</b>{{ groundblinds.TotalWeight }}</p>
+                <p><b>WINDOWS SECURING:</b>{{ groundblinds.WindowsSecuring }}</p>
+                <p><b>BRUSH STRIPS:</b>{{ groundblinds.BrushStrips }}</p>
+                <p><b>OTHER FEATURES:</b>{{ groundblinds.OtherFeatures }}</p>
+                <p><b>SIZE:</b>{{ groundblinds.Size }}</p>
+                <p><b>OZONE GEAR POCKETS:</b>{{ groundblinds.OzoneGearPockets }}</p>
+                <p><b>FOOT PRINT:</b>{{ groundblinds.Footprint }}</p>
+            </ul>
+        </div>
+    </div>
+    <div class="Right_content">
+        <div class="Item_img">
+            {% if groundblinds.AssetAdvanced %}
+				{{ groundblinds.AssetAdvanced.thumbnail("content").html|raw }}
+			{% endif %}
+        </div>
+        {% block Assets %}
+			{% set additionalImages = groundblinds.Assets %}
+			{% set sum = 1 %}
+			{%  if(additionalImages) %}
+
+					{% for image in additionalImages %}
+
+						<div class="Item_img_{{ sum }}">
+							
+								{{ image.thumbnail.getHTML({imgAttributes: {class: 'img-thumbnail1 img-fluid'}})|raw }}
+							
+						</div>
+					{% set sum = sum + 1 %}
+					{% endfor %}
+
+			{%  endif %}
+		{% endblock %}
+		<div class="ItemStatus">
+            <label for="Status">Item Status-</label>
+            <select name="Item Status" id="Status">
+                <option value="Active">Active</option>
+                <option value="Inactive">Inactive</option>
+              </select>
+        </div>
+        <div class="VAM">
+            <h1>View All Media</h1>
+        </div>
+        <div class="MSRP">
+            <h1>{{ groundblinds.PriceType }} : ${{ groundblinds.Price }} </h1>
+        </div>
+        <div class="Available">
+            <label for="Available">Item Availablility-</label>
+            <select name="Availablility" id="Available">
+                <option value="In Stock">In Stock</option>
+                <option value="Out of Stock">Out of Stock</option>
+              </select>
+        </div>
+        <div class="LBtn">
+            <a href="#" class="btn_1">Save</a>
+            <a href="#" class="btn_2">Submit for Approval</a>
+            <a href="#" class="btn_3">Cancel</a>  
+        </div>
+    </div>
+
+{% endblock %}
+
+
+
+{#{% extends 'layouts/layout.html.twig' %}#}
+
+
+{#{% block content %}#}
+
+{#    <div id="main-content" class="main-content mb-5">#}
+
+{#        <div class="page-header">#}
+{#            <h1>Name {{ groundblinds.ProductName }}</h1>#}
+{#			<h1>SKU {{ groundblinds.SKU }}</h1>#}
+{#			<h1>UPC {{ groundblinds.UPC }}</h1>#}
+{#			Global Trade Item Number {{ groundblinds.GlobalTradeItemNumber }}#}
+{#			{% if groundblinds.AssetAdvanced %}#}
+{#            {{ groundblinds.AssetAdvanced.thumbnail("content").html|raw }}#}
+{#            {% endif %}#}
+{#            Description {{ groundblinds.Description|raw }}#}
+{#			ProductWidth {{ groundblinds.ProductWidth|raw }}#}
+{#			ProductHeight {{ groundblinds.ProductHeight|raw }}#}
+{#			ProductDepth {{ groundblinds.ProductDepth|raw }}#}
+{#			Windows {{ groundblinds.Windows }}#}
+{#			Construction {{ groundblinds.Construction }}#}
+{#			ShootingWidth {{ groundblinds.ShootingWidth|raw }}#}
+{#			StandingHeight {{ groundblinds.StandingHeight|raw }}#}
+{#			HeightToBottomOfWindows {{ groundblinds.HeightToBottomOfWindows|raw }}#}
+{#			CarryingBag {{ groundblinds.CarryingBag }}#}
+{#			Stakes {{ groundblinds.Stakes }}#}
+{#			Door {{ groundblinds.Door }}#}
+{#			TotalWeight {{ groundblinds.TotalWeight|raw }}#}
+{#			WindowsSecuring {{ groundblinds.WindowsSecuring }}#}
+{#			BrushStrips {{ groundblinds.BrushStrips }}#}
+{#			OtherFeatures {{ groundblinds.OtherFeatures }}#}
+{#			Size {{ groundblinds.Size }}#}
+{#			OzoneGearPockets {{ groundblinds.OzoneGearPockets }}#}
+{#			Footprint {{ groundblinds.Footprint }}#}
+{#			Price Type {{ groundblinds.PriceType }}#}
+{#			Price {{ groundblinds.Price }}#}
+{#		</div>#}
+
+{#    </div>#}
+
+{#{% endblock %}#}

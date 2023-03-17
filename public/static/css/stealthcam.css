@@ -1,0 +1,255 @@
+body{
+    background-color:white;
+}
+
+.Header {
+    background-color: white;
+    border: 2px solid black;
+    height: 100px;
+}
+
+.Header .button{
+    position: absolute;
+    top: 60px;
+    left: 750px;
+    justify-content: center;
+    align-items: center;
+    transform: translate(-50%,-50%);
+}
+
+.Header .button .btn{
+    border: 2px solid black;
+    padding: 5px 20px;
+    color: black;
+    transition: 0.5px ease;
+    font-size: 18px;
+    text-decoration: none;
+    font-weight: bold;
+}
+.Header .button .btn:hover{
+    background-color: bisque;
+    color: black;
+}
+
+.Line_Heading_1{
+    position: absolute;
+    top: 150px;
+    left: 650px;
+    font-size: 12px;
+}
+
+.Line_Heading_2{
+    position: absolute;
+    top: 650px;
+    left: 675px;
+    font-size: 12px;
+}
+
+.content_1{
+    float: left;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    
+}
+
+.content_1 .FI_1{
+    list-style: none;
+    margin-left: 80px;
+    margin-top: 150px;
+    font-size: 12;
+}
+.content_1 .FI_1 h1{
+    font-size: 10px;
+    border: 2px solid black;
+    padding: 1px;
+    text-align: center;
+    background-color: bisque;
+}
+.content_1 .FI_2{
+    list-style: none;
+    margin-left: 80px;
+    margin-top: 150px;
+    font-size: 12;
+}
+.content_1 .FI_2 h1{
+    font-size: 10px;
+    border: 2px solid black;
+    padding: 1px;
+    text-align: center;
+    background-color: bisque;
+}
+.content_1 .FI_3{
+    list-style: none;
+    margin-left: 80px;
+    margin-top: 150px;
+    font-size: 12;
+}
+.content_1 .FI_3 h1{
+    font-size: 10px;
+    border: 2px solid black;
+    padding: 1px;
+    text-align: center;
+    background-color: bisque;
+}
+.content_1 .FI_4{
+    list-style: none;
+    margin-left: 80px;
+    margin-top: 150px;
+    font-size: 12;
+}
+.content_1 .FI_4 h1{
+    font-size: 10px;
+    border: 2px solid black;
+    padding: 1px;
+    text-align: center;
+    background-color: bisque;
+}
+.content_1 .FI_5{
+    list-style: none;
+    margin-left: 80px;
+    margin-top: 150px;
+    font-size: 12;
+}
+.content_1 .FI_5 h1{
+    font-size: 10px;
+    border: 2px solid black;
+    padding: 1px;
+    text-align: center;
+    background-color: bisque;
+}
+
+
+.content_2{
+    float: left;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    
+}
+
+.content_2 .FI_1{
+    list-style: none;
+    margin-left: 80px;
+    margin-top: 150px;
+    font-size: 12;
+}
+.content_2 .FI_1 h1{
+    font-size: 10px;
+    border: 2px solid black;
+    padding: 1px;
+    text-align: center;
+    background-color: bisque;
+}
+.content_2 .FI_2{
+    list-style: none;
+    margin-left: 80px;
+    margin-top: 150px;
+    font-size: 12;
+}
+.content_2 .FI_2 h1{
+    font-size: 10px;
+    border: 2px solid black;
+    padding: 1px;
+    text-align: center;
+    background-color: bisque;
+}
+.content_2 .FI_3{
+    list-style: none;
+    margin-left: 80px;
+    margin-top: 150px;
+    font-size: 12;
+}
+.content_2 .FI_3 h1{
+    font-size: 10px;
+    border: 2px solid black;
+    padding: 1px;
+    text-align: center;
+    background-color: bisque;
+}
+.content_2 .FI_4{
+    list-style: none;
+    margin-left: 80px;
+    margin-top: 150px;
+    font-size: 12;
+}
+.content_2 .FI_4 h1{
+    font-size: 10px;
+    border: 2px solid black;
+    padding: 1px;
+    text-align: center;
+    background-color: bisque;
+}
+.content_2 .FI_5{
+    list-style: none;
+    margin-left: 80px;
+    margin-top: 150px;
+    font-size: 12;
+}
+.content_2 .FI_5 h1{
+    font-size: 10px;
+    border: 2px solid black;
+    padding: 1px;
+    text-align: center;
+    background-color: bisque;
+}
+
+.Header .GSM img{
+    width: 200px;
+    float: left;
+    height: 70px;
+    padding-left: 30px;
+    padding-top: 10px;
+}
+
+.StealthCam_img{
+    width: 300px;
+    float: right;
+    height: 70px;
+    padding-right: 30px;
+    padding-top: 15px;
+}
+
+.content_1 .FI_1 .Prod img{
+    width: 200px;
+    height: 250px;
+}
+.content_1 .FI_2 .Prod img{
+    width: 200px;
+    height: 250px;
+}
+.content_1 .FI_3 .Prod img{
+    width: 200px;
+    height: 250px;
+}
+.content_1 .FI_4 .Prod img{
+    width: 200px;
+    height: 250px;
+}
+.content_1 .FI_5 .Prod img{
+    width: 200px;
+    height: 250px;
+}
+
+.content_2 .FI_1 .Prod img{
+    width: 200px;
+    height: 250px;
+}
+.content_2 .FI_2 .Prod img{
+    width: 200px;
+    height: 250px;
+}
+.content_2 .FI_3 .Prod img{
+    width: 200px;
+    height: 250px;
+}
+.content_2 .FI_4 .Prod img{
+    width: 200px;
+    height: 250px;
+}
+.content_2 .FI_5 .Prod img{
+    width: 200px;
+    height: 250px;
+}

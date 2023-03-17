@@ -1,0 +1,28 @@
+{# @var sctrailcamera \Pimcore\Model\DataObject\sctrailcamera #}
+
+{% extends 'layouts/stealthcam.html.twig' %}
+
+
+{% block content %}
+
+	<div class="content_1">
+
+		{%  for sctrailcamera in sctrailcamera %}
+			{# @var sctrailcamera \Pimcore\Model\DataObject\Apparel #}
+			<div class="FI_1">
+			    <a href="{{ path('pimcore_element', {'element': sctrailcamera}) }}">
+    				<div class="Prod">
+    					{% if sctrailcamera.AssetAdvanced %}
+    						{{ sctrailcamera.AssetAdvanced.thumbnail("content").html|raw }}
+    					{% endif %}
+    				</div>
+    				<h1>{{ sctrailcamera.ProductName }}</h1>
+    				<h1>SKU: {{ sctrailcamera.SKU }}</h1>
+    				<h1>UPC: {{ sctrailcamera.UPC }}</h1>	
+				</a>
+			</div>
+		{% endfor %}
+	
+	</div>
+
+{% endblock %}

@@ -1,0 +1,120 @@
+{# @var cameraarms \Pimcore\Model\DataObject\cameraarms #}
+
+{% extends 'layouts/layout.html.twig' %}
+
+
+{% block content %}
+
+    <div class="ItemName">
+        <h1>{{ cameraarms.ProductName }}</h1>
+    </div>
+    <div class="Left_Content">
+        <div class="Item_details">
+            <h1>TYPE: cameraarms</h1>
+            <h1>SKU: {{ cameraarms.SKU }}</h1>
+            <h1>UPC: {{ cameraarms.UPC }}</h1>
+            <h1>Global Trade Item Number: {{ cameraarms.GlobalTradeItemNumber }}</h1>
+        </div>
+        <div class="Prod_Feature">
+            <h1>PRODUCT FEATURES</h1>
+            {{ cameraarms.Description|raw }}
+        </div>
+        <div class="Prod_Specs">
+            <h1>PRODUCT SPECS</h1>
+            <ul style="list-style-type:circle">
+                <p><b>WEIGHT:</b>{{ cameraarms.Weight }}</p>
+                <p><b>PRODUCT WIDTH:</b>{{ cameraarms.ProductWidth }}</p>
+                <p><b>PRODUCT HEIGHT:</b>{{ cameraarms.ProductHeight }}</p>
+                <p><b>PRODUCT DEPTH:</b>{{ cameraarms.ProductDepth }}</p>
+                <p><b>WEIGHT RATING:</b>{{ cameraarms.WeightRating }}</p>
+                <p><b>CONSTRUCTION:</b>{{ cameraarms.Construction }}</p>
+                <p><b>MECHANICS:</b>{{ cameraarms.Mechanics }}</p>
+            </ul>
+        </div>
+    </div>
+    <div class="Right_content">
+        <div class="Item_img">
+            {% if cameraarms.AssetAdvanced %}
+				{{ cameraarms.AssetAdvanced.thumbnail("content").html|raw }}
+			{% endif %}
+        </div>
+        {% block Assets %}
+			{% set additionalImages = cameraarms.Assets %}
+			{% set sum = 1 %}
+			{%  if(additionalImages) %}
+
+					{% for image in additionalImages %}
+
+						<div class="Item_img_{{ sum }}">
+							
+								{{ image.thumbnail.getHTML({imgAttributes: {class: 'img-thumbnail1 img-fluid'}})|raw }}
+							
+						</div>
+					{% set sum = sum + 1 %}
+					{% endfor %}
+
+			{%  endif %}
+		{% endblock %}
+		<div class="ItemStatus">
+            <label for="Status">Item Status : {{ cameraarms.ItemStatus }}</label></label>
+            {#<select name="Item Status" id="Status">#}
+            {#    <option value="Active">Active</option>#}
+            {#    <option value="Inactive">Inactive</option>#}
+            {#  </select>#}
+        </div>
+        <div class="VAM">
+            <h1>View All Media</h1>
+        </div>
+        <div class="MSRP">
+            <h1>{{ cameraarms.PriceType }} : ${{ cameraarms.Price }} </h1>
+        </div>
+        <div class="Available">
+            <label for="Available">Item Availablility : {{ cameraarms.Availability }}</label>
+            {#<select name="Availablility" id="Available">#}
+            {#    <option value="In Stock">In Stock</option>#}
+            {#    <option value="Out of Stock">Out of Stock</option>#}
+            {#  </select>#}
+        </div>
+        <div class="LBtn">
+            <a href="#" class="btn_1">Save</a>
+            <a href="#" class="btn_2">Submit for Approval</a>
+            <a href="#" class="btn_3">Cancel</a>  
+        </div>
+    </div>
+
+{% endblock %}
+
+
+
+
+{# @var apparel \Pimcore\Model\DataObject\apparel #}
+
+{#{% extends 'layouts/layout.html.twig' %}#}
+
+
+{#{% block content %}#}
+
+{#    <div id="main-content" class="main-content mb-5">#}
+
+{#        <div class="page-header">#}
+{#            <h1>Name {{ cameraarms.ProductName }}</h1>#}
+{#			<h1>SKU {{ cameraarms.SKU }}</h1>#}
+{#			<h1>UPC {{ cameraarms.UPC }}</h1>#}
+{#			Global Trade Item Number {{ cameraarms.GlobalTradeItemNumber }}#}
+{#			{% if cameraarms.AssetAdvanced %}#}
+{#            {{ cameraarms.AssetAdvanced.thumbnail("content").html|raw }}#}
+{#            {% endif %}#}
+{#            Description {{ cameraarms.Description|raw }}#}
+{#            Weight {{ cameraarms.Weight|raw }}#}
+{#			ProductWidth {{ cameraarms.ProductWidth|raw }}#}
+{#			ProductHeight {{ cameraarms.ProductHeight|raw }}#}
+{#			ProductDepth {{ cameraarms.ProductDepth|raw }}#}
+{#		    Construction {{ cameraarms.Construction }}#}
+{#			Mechanics {{ cameraarms.Mechanics }}#}
+{#			Price Type {{ cameraarms.PriceType }}#}
+{#			Price {{ cameraarms.Price }}#}
+{#		</div>#}
+
+{#    </div>#}
+
+{#{% endblock %}#}

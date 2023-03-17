@@ -1,0 +1,106 @@
+{# @var spareparts \Pimcore\Model\DataObject\spareparts #}
+
+{% extends 'layouts/layout.html.twig' %}
+
+
+{% block content %}
+
+    <div class="ItemName">
+        <h1>{{ spareparts.ProductName }}</h1>
+    </div>
+    <div class="Left_Content">
+        <div class="Item_details">
+            <h1>TYPE: spareparts</h1>
+            <h1>SKU: {{ spareparts.SKU }}</h1>
+            <h1>UPC: {{ spareparts.UPC }}</h1>
+            <h1>Global Trade Item Number: {{ spareparts.GlobalTradeItemNumber }}</h1>
+        </div>
+        <div class="Prod_Feature">
+            <h1>PRODUCT FEATURES</h1>
+            {{ spareparts.Description|raw }}
+        </div>
+        <div class="Prod_Specs">
+            <h1>PRODUCT SPECS</h1>
+            <ul style="list-style-type:circle">
+                <p><b>COMPATIBILITY :</b>{{ spareparts.Compatibility }}</p>
+            </ul>
+        </div>
+    </div>
+    <div class="Right_content">
+        <div class="Item_img">
+            {% if spareparts.AssetAdvanced %}
+				{{ spareparts.AssetAdvanced.thumbnail("content").html|raw }}
+			{% endif %}
+        </div>
+        {% block Assets %}
+			{% set additionalImages = spareparts.Assets %}
+			{% set sum = 1 %}
+			{%  if(additionalImages) %}
+
+					{% for image in additionalImages %}
+
+						<div class="Item_img_{{ sum }}">
+							
+								{{ image.thumbnail.getHTML({imgAttributes: {class: 'img-thumbnail1 img-fluid'}})|raw }}
+							
+						</div>
+					{% set sum = sum + 1 %}
+					{% endfor %}
+
+			{%  endif %}
+		{% endblock %}
+		<div class="ItemStatus">
+            <label for="Status">Item Status-</label>
+            <select name="Item Status" id="Status">
+                <option value="Active">Active</option>
+                <option value="Inactive">Inactive</option>
+              </select>
+        </div>
+        <div class="VAM">
+            <h1>View All Media</h1>
+        </div>
+        <div class="MSRP">
+            <h1>{{ spareparts.PriceType }} : ${{ spareparts.Price }} </h1>
+        </div>
+        <div class="Available">
+            <label for="Available">Item Availablility-</label>
+            <select name="Availablility" id="Available">
+                <option value="In Stock">In Stock</option>
+                <option value="Out of Stock">Out of Stock</option>
+              </select>
+        </div>
+        <div class="LBtn">
+            <a href="#" class="btn_1">Save</a>
+            <a href="#" class="btn_2">Submit for Approval</a>
+            <a href="#" class="btn_3">Cancel</a>  
+        </div>
+    </div>
+
+{% endblock %}
+
+
+
+{#{% extends 'layouts/layout.html.twig' %}#}
+
+
+{#{% block content %}#}
+
+{#    <div id="main-content" class="main-content mb-5">#}
+
+{#        <div class="page-header">#}
+{#            <h1>Name {{ spareparts.ProductName }}</h1>#}
+{#			<h1>SKU {{ spareparts.SKU }}</h1>#}
+{#			<h1>UPC {{ spareparts.UPC }}</h1>#}
+{#			Global Trade Item Number {{ spareparts.GlobalTradeItemNumber }}#}
+{#			{% if spareparts.AssetAdvanced %}#}
+{#            {{ spareparts.AssetAdvanced.thumbnail("content").html|raw }}#}
+{#            {% endif %}#}
+{#            Description {{ spareparts.Description|raw }}#}
+{#            Compatibility {{ spareparts.Compatibility }}#}
+{#            Price Type {{ spareparts.PriceType }}#}
+{#			Price {{ spareparts.Price }}#}
+{#		</div>#}
+
+{#    </div>#}
+
+{#{% endblock %}#}
