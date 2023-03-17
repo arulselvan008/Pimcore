@@ -100,7 +100,7 @@ services:
     # COMMANDS
     #
 
-    # auto-register all commands as services
+    # auto-register all commands as services111111111111111
     App\Command\:
         resource: '../src/Command/*'
         tags: [ 'console.command' ]
