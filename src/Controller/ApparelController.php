@@ -38,7 +38,7 @@ class ApparelController extends BaseController
     public function listingAction(Request $request, PaginatorInterface $paginator)
     {
 
-        // get a list of apparel objects and order them by date
+        // get a list of apparel objects and order them by dates
         $apparelList = new Apparel\Listing();
 
         $paginator = $paginator->paginate(
