@@ -10,6 +10,7 @@
  * - Attname [input]
  * - Attvalue [input]
  * - Description [input]
+ * - Password [password]
  */
 
 return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
@@ -17,7 +18,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
    'name' => 'Import',
    'description' => '',
    'creationDate' => 0,
-   'modificationDate' => 1676378929,
+   'modificationDate' => 1678873426,
    'userOwner' => 2,
    'userModification' => 2,
    'parentClass' => '',
@@ -225,6 +226,32 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
             array (
             ),
              'defaultValueGenerator' => '',
+          )),
+          5 => 
+          Pimcore\Model\DataObject\ClassDefinition\Data\Password::__set_state(array(
+             'fieldtype' => 'password',
+             'width' => '',
+             'algorithm' => 'password_hash',
+             'salt' => '',
+             'saltlocation' => 'back',
+             'minimumLength' => NULL,
+             'name' => 'Password',
+             'title' => 'Password',
+             'tooltip' => '',
+             'mandatory' => false,
+             'noteditable' => false,
+             'index' => false,
+             'locked' => false,
+             'style' => '',
+             'permissions' => NULL,
+             'datatype' => 'data',
+             'relationType' => false,
+             'invisible' => false,
+             'visibleGridView' => false,
+             'visibleSearch' => false,
+             'blockedVarsForExport' => 
+            array (
+            ),
           )),
         ),
          'locked' => false,

@@ -13,6 +13,8 @@
     "pimcore/frontend-permission-toolkit-bundle": "^1.5",
     "pimcore/perspective-editor": "^1.5",
     "pimcore/pimcore": "^10.5",
+    "symfony/sendgrid-mailer": "^6.0",
+    "symfony/sendinblue-mailer": "^6.0",
     "youwe/workflow-gui": "dev-master"
   },
   "require-dev": {

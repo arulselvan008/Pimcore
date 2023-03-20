@@ -40,9 +40,8 @@ class BoxBlindsLinkGenerator implements LinkGeneratorInterface
 		private ContainerInterface $container
 	)
     {
-
+        
     }
-	
     /**
      * @param Concrete $object
      * @param array $params
