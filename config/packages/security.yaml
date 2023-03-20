@@ -55,3 +55,4 @@ security:
     role_hierarchy:
         # Pimcore admin  // DO NOT CHANGE!
         ROLE_PIMCORE_ADMIN: [ROLE_PIMCORE_USER]
+        #ROLE_PIMCORE_ARUL: [ROLE_PIMCORE_USER]

@@ -29,7 +29,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
    'name' => 'NewColdSteelProducts',
    'description' => 'This is the class for Cold Steel products',
    'creationDate' => 0,
-   'modificationDate' => 1676529695,
+   'modificationDate' => 1678775349,
    'userOwner' => 2,
    'userModification' => 2,
    'parentClass' => '',
